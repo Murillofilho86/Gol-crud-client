@@ -1,0 +1,64 @@
+<div class="uk-container">
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+        <li class="uk-active">
+          <app-create-airplane></app-create-airplane>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<app-error-message></app-error-message>
+<!-- <div class="uk-container">
+  <div class="uk-grid uk-margin-small-top">
+    <div class="uk-width-1-2 uk-margin-small-bottom" *ngFor="let airplane of _airplanes">
+      <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+          <img src="https://picsum.photos/200/300/?random" alt="" uk-cover>
+          <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+          <div class="uk-card-body">
+            <h3 class="uk-card-title">{{ airplane.code }} - {{airplane.model}}</h3>
+            <p>Nº de passageiros: {{ airplane.passengersQuantity }}</p>
+            <p>Data de Cadastro: {{ airplane.createDate }}</p>
+
+            <app-edit-airplane  [id]="airplane"></app-edit-airplane>
+            <button type="button" class="uk-icon uk-button uk-button-default" (click)="deleteAirplane(airplane.id)"
+              uk-icon="trash"></button>
+   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="uk-container">
+  <table class="uk-table uk-table-middle uk-table-divider uk-table-hover">
+    <thead>
+      <tr>
+        <th class="uk-width-small">Model</th>
+        <th>Code</th>
+        <th>Quantidade de passageiros</th>
+        <th>Data de cadastro</th>
+        <th>Editar</th>
+        <th>Excluir</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let airplane of _airplanes">
+      <tr>
+        <td>{{airplane.model}}</td>
+        <td>{{airplane.code}}</td>
+        <td>{{airplane.passengersQuantity}}</td>
+        <td>{{airplane.createDate | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <app-edit-airplane [id]="airplane"></app-edit-airplane>
+        </td>
+        <td><button class="uk-button uk-button-default" type="button" (click)="deleteAirplane(airplane.id)"
+            uk-icon="trash"></button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
